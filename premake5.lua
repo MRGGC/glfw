@@ -1,9 +1,15 @@
-project "GLFW"
+project "glfw"
 	kind "StaticLib"
 	language "C"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/build/bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("%{wks.location}/build/bin-int/" .. outputdir .. "/%{prj.name}")
+
+	postbuildcommands
+	{
+		("{COPY} %{cfg.buildtarget.relpath} %{wks.location}/build/bin/" .. outputdir .. "/Sandbox/")
+	}
+	postbuildmessage "Copied libs"
 
 	files
 	{
