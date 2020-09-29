@@ -11,6 +11,9 @@ project "glfw"
 	}
 	postbuildmessage "Copied libs"
 
+	links { "GL", "dl", "m", "X11" }
+	buildoptions "-pthread"
+
 	files
 	{
 		"include/GLFW/glfw3.h",
