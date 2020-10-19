@@ -6,12 +6,6 @@ project "glfw"
 	targetdir ("%{wks.location}/build/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/build/bin-int/" .. outputdir .. "/%{prj.name}")
 
-	postbuildcommands
-	{
-		("{COPY} %{cfg.buildtarget.relpath} %{wks.location}/build/bin/" .. outputdir .. "/Sandbox/")
-	}
-	postbuildmessage "Copied libs"
-
 	links { "GL", "dl", "m", "X11" }
 	buildoptions "-pthread"
 
